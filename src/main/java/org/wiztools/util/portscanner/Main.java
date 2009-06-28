@@ -28,7 +28,7 @@ public class Main {
             }
         }
         catch(UnknownHostException ex){
-            System.err.println(ex.getMessage());
+            System.err.println("Invalid port name: " + ex.getMessage());
             System.exit(2);
         }
     }
