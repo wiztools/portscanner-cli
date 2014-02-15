@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -20,7 +21,7 @@ public final class PortScanner {
     private static final int DEFAULT_THREAD_COUNT = 4;
 
     private final InetAddress addr;
-    private List<Port> openPorts = new ArrayList<Port>();
+    private final List<Port> openPorts = new ArrayList<Port>();
 
     public PortScanner(final InetAddress addr){
         this.addr = addr;
@@ -48,7 +49,7 @@ public final class PortScanner {
             else{
                 endPort = (startPort-1) + chunkSize;
             }
-            LOG.info("Thread " + i + " scanning from " + startPort + " to " + endPort);
+            LOG.log(Level.INFO, "Thread {0} scanning from {1} to {2}", new Object[]{i, startPort, endPort});
             tArr[i] = new Thread(new PortScanThread(startPort, endPort));
             tArr[i].start();
         }
@@ -67,8 +68,8 @@ public final class PortScanner {
     }
 
     private class PortScanThread implements Runnable{
-        private int startPort;
-        private int endPort;
+        private final int startPort;
+        private final int endPort;
 
         PortScanThread(int startPort, int endPort){
             this.startPort = startPort;
