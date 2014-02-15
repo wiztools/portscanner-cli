@@ -7,20 +7,33 @@
     <packaging>jar</packaging>
     <version>0.2.0-SNAPSHOT</version>
     <name>portscanner-cli</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/wiztools/portscanner-cli</url>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+    <scm>
+        <connection>scm:git:https://github.com/wiztools/portscanner-cli.git</connection>
+        <developerConnection>scm:git:https://github.com/wiztools/portscanner-cli.git</developerConnection>
+        <url>https://github.com/wiztools/portscanner-cli</url>
+    </scm>
+    
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -36,7 +49,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.6</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
